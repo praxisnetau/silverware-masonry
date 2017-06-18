@@ -18,7 +18,6 @@
 namespace SilverWare\Masonry\Components;
 
 use SilverStripe\Forms\CheckboxField;
-use SilverStripe\Forms\CompositeField;
 use SilverStripe\Forms\DropdownField;
 use SilverStripe\Forms\SelectionGroup;
 use SilverStripe\Forms\SelectionGroup_Item;
@@ -26,6 +25,7 @@ use SilverStripe\Forms\TextField;
 use SilverStripe\ORM\ArrayList;
 use SilverStripe\View\ArrayData;
 use SilverWare\Components\BaseListComponent;
+use SilverWare\Forms\FieldSection;
 use SilverWare\Forms\ViewportsField;
 
 /**
@@ -136,45 +136,53 @@ class MasonryComponent extends BaseListComponent
         
         $fields->addFieldToTab(
             'Root.Style',
-            CompositeField::create([
-                SelectionGroup::create(
-                    'ColumnUnit',
-                    [
-                        SelectionGroup_Item::create(
-                            self::UNIT_PIXEL,
-                            ViewportsField::create(
-                                'PixelWidth',
-                                ''
-                            )->setUseTextInput(true),
-                            $this->owner->fieldLabel('Pixels')
-                        ),
-                        SelectionGroup_Item::create(
-                            self::UNIT_PERCENT,
-                            ViewportsField::create(
-                                'PercentWidth',
-                                ''
-                            )->setUseTextInput(true),
-                            $this->owner->fieldLabel('Percentages')
-                        )
-                    ]
-                )->setTitle($this->owner->fieldLabel('ColumnWidths')),
-                TextField::create(
-                    'Gutter',
-                    $this->fieldLabel('Gutter')
-                )
-            ])->setName('MasonryComponentStyle')->setTitle($this->i18n_singular_name())
+            FieldSection::create(
+                'MasonryComponentStyle',
+                $this->i18n_singular_name(),
+                [
+                    SelectionGroup::create(
+                        'ColumnUnit',
+                        [
+                            SelectionGroup_Item::create(
+                                self::UNIT_PIXEL,
+                                ViewportsField::create(
+                                    'PixelWidth',
+                                    ''
+                                )->setUseTextInput(true),
+                                $this->owner->fieldLabel('Pixels')
+                            ),
+                            SelectionGroup_Item::create(
+                                self::UNIT_PERCENT,
+                                ViewportsField::create(
+                                    'PercentWidth',
+                                    ''
+                                )->setUseTextInput(true),
+                                $this->owner->fieldLabel('Percentages')
+                            )
+                        ]
+                    )->setTitle($this->owner->fieldLabel('ColumnWidths')),
+                    TextField::create(
+                        'Gutter',
+                        $this->fieldLabel('Gutter')
+                    )
+                ]
+            )
         );
         
         // Create Options Fields:
         
         $fields->addFieldToTab(
             'Root.Options',
-            CompositeField::create([
-                CheckboxField::create(
-                    'HorizontalOrder',
-                    $this->fieldLabel('HorizontalOrder')
-                )
-            ])->setName('MasonryComponentOptions')->setTitle($this->i18n_singular_name())
+            FieldSection::create(
+                'MasonryComponentOptions',
+                $this->i18n_singular_name(),
+                [
+                    CheckboxField::create(
+                        'HorizontalOrder',
+                        $this->fieldLabel('HorizontalOrder')
+                    )
+                ]
+            )
         );
         
         // Answer Field Objects:
@@ -197,10 +205,10 @@ class MasonryComponent extends BaseListComponent
         
         // Define Field Labels:
         
-        $labels['Gutter'] = _t(__CLASS__ . '.GUTTERINPIXELS', 'Gutter (in pixels)');
-        $labels['ColumnWidths'] = _t(__CLASS__ . '.WIDTHS', 'Column widths');
-        $labels['Percentages'] = _t(__CLASS__ . '.PERCENTAGES', 'Percentages');
         $labels['Pixels'] = _t(__CLASS__ . '.PIXELS', 'Pixels');
+        $labels['Gutter'] = _t(__CLASS__ . '.GUTTERINPIXELS', 'Gutter (in pixels)');
+        $labels['Percentages'] = _t(__CLASS__ . '.PERCENTAGES', 'Percentages');
+        $labels['ColumnWidths'] = _t(__CLASS__ . '.WIDTHS', 'Column widths');
         $labels['HorizontalOrder'] = _t(__CLASS__ . '.ORDERITEMSHORIZONTALLY', 'Order items horizontally');
         
         // Answer Field Labels:

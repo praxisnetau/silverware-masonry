@@ -1,7 +1,7 @@
 /* Masonry Component
 ===================================================================================================================== */
 
-import $ from 'jQuery';
+import $ from 'jquery';
 import Masonry from 'masonry-layout';
 import ImagesLoaded from 'imagesloaded';
 

@@ -1,5 +1,9 @@
 # SilverWare Masonry Module
 
+[![Latest Stable Version](https://poser.pugx.org/silverware/masonry/v/stable)](https://packagist.org/packages/silverware/masonry)
+[![Latest Unstable Version](https://poser.pugx.org/silverware/masonry/v/unstable)](https://packagist.org/packages/silverware/masonry)
+[![License](https://poser.pugx.org/silverware/masonry/license)](https://packagist.org/packages/silverware/masonry)
+
 Provides a masonry component for use with [SilverWare][silverware].
 
 ## Contents

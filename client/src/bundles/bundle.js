@@ -7,4 +7,4 @@ require('styles/bundle.scss');
 
 // Load Components:
 
-require('components/MasonryComponent');
+require('components/MasonryComponent.js');
