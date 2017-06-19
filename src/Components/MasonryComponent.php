@@ -121,6 +121,7 @@ class MasonryComponent extends BaseListComponent
         'PercentWidthSmall' => '50',
         'PercentWidthMedium' => '33.33333333',
         'PercentWidthLarge' => '25',
+        'PercentWidthHuge' => '20',
         'HorizontalOrder' => 1,
         'ImageItems' => 1
     ];
