@@ -42,8 +42,8 @@ class MasonryComponent extends BaseListComponent
     /**
      * Define constants.
      */
-    const UNIT_PIXEL   = 'pixel';
     const UNIT_PERCENT = 'percent';
+    const UNIT_PIXEL   = 'pixel';
     
     /**
      * Human-readable singular name.
@@ -115,10 +115,14 @@ class MasonryComponent extends BaseListComponent
      */
     private static $defaults = [
         'Gutter' => 10,
-        'ColumnUnit' => 'pixel',
-        'ImageItems' => 1,
+        'ColumnUnit' => 'percent',
         'ImageLinksTo' => 'file',
-        'HorizontalOrder' => 1
+        'PercentWidthTiny' => '100',
+        'PercentWidthSmall' => '50',
+        'PercentWidthMedium' => '33.33333333',
+        'PercentWidthLarge' => '25',
+        'HorizontalOrder' => 1,
+        'ImageItems' => 1
     ];
     
     /**
@@ -144,20 +148,20 @@ class MasonryComponent extends BaseListComponent
                         'ColumnUnit',
                         [
                             SelectionGroup_Item::create(
-                                self::UNIT_PIXEL,
-                                ViewportsField::create(
-                                    'PixelWidth',
-                                    ''
-                                )->setUseTextInput(true),
-                                $this->owner->fieldLabel('Pixels')
-                            ),
-                            SelectionGroup_Item::create(
                                 self::UNIT_PERCENT,
                                 ViewportsField::create(
                                     'PercentWidth',
                                     ''
                                 )->setUseTextInput(true),
                                 $this->owner->fieldLabel('Percentages')
+                            ),
+                            SelectionGroup_Item::create(
+                                self::UNIT_PIXEL,
+                                ViewportsField::create(
+                                    'PixelWidth',
+                                    ''
+                                )->setUseTextInput(true),
+                                $this->owner->fieldLabel('Pixels')
                             )
                         ]
                     )->setTitle($this->owner->fieldLabel('ColumnWidths')),
@@ -276,9 +280,17 @@ class MasonryComponent extends BaseListComponent
             
             if ($value = $widths->getField($viewport)) {
                 
+                $gutter = (int) $this->Gutter;
+                
+                if ($this->ColumnUnitCSS == '%') {
+                    $gutter = $gutter - ($gutter * ($value / 100));
+                }
+                
                 $data->push(
                     ArrayData::create([
-                        'Width' => sprintf('%d%s', $value, $this->ColumnUnitCSS),
+                        'Unit' => $this->ColumnUnitCSS,
+                        'Width' => sprintf('%F%s', $value, $this->ColumnUnitCSS),
+                        'Gutter' => $gutter,
                         'Breakpoint' => $widths->getBreakpoint($viewport)
                     ])
                 );
