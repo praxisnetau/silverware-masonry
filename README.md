@@ -43,7 +43,7 @@ To make use of this component:
 
 ### Column Widths
 
-On the Style tab, you may choose either "Pixels" or "Percentages" for the column widths of the component.
+On the Style tab, you may choose either "Percentages" or "Pixels" for the column widths of the component.
 For each type of unit, fields are available to specify the column width per viewport size:
 
 - Tiny
@@ -52,7 +52,7 @@ For each type of unit, fields are available to specify the column width per view
 - Large
 - Huge
 
-As SilverWare uses a mobile-first approach, enter at least one width in the "Tiny" field.
+As SilverWare uses a mobile-first approach, you should enter at least one width in the "Tiny" field.
 
 ### Gutter
 
