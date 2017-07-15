@@ -142,8 +142,8 @@ class MasonryComponent extends BaseListComponent
         $fields->addFieldToTab(
             'Root.Style',
             FieldSection::create(
-                'MasonryComponentStyle',
-                $this->i18n_singular_name(),
+                'MasonryStyle',
+                $this->fieldLabel('MasonryStyle'),
                 [
                     SelectionGroup::create(
                         'ColumnUnit',
@@ -179,8 +179,8 @@ class MasonryComponent extends BaseListComponent
         $fields->addFieldToTab(
             'Root.Options',
             FieldSection::create(
-                'MasonryComponentOptions',
-                $this->i18n_singular_name(),
+                'MasonryOptions',
+                $this->fieldLabel('MasonryOptions'),
                 [
                     CheckboxField::create(
                         'HorizontalOrder',
@@ -215,6 +215,7 @@ class MasonryComponent extends BaseListComponent
         $labels['Percentages'] = _t(__CLASS__ . '.PERCENTAGES', 'Percentages');
         $labels['ColumnWidths'] = _t(__CLASS__ . '.WIDTHS', 'Column widths');
         $labels['HorizontalOrder'] = _t(__CLASS__ . '.ORDERITEMSHORIZONTALLY', 'Order items horizontally');
+        $labels['MasonryStyle'] = $labels['MasonryOptions'] = _t(__CLASS__ . '.MASONRY', 'Masonry');
         
         // Answer Field Labels:
         
