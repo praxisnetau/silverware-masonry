@@ -1,8 +1,8 @@
 <% if $ListItems %>
-  <div class="$GridClass" data-masonry-config="$MasonryConfigJSON">
+  <div class="$WrapperClass" data-masonry-config="$MasonryConfigJSON">
     <div class="masonry-grid-sizer"></div>
     <% loop $ListItems %>
-      <% include SilverWare\Masonry\Components\MasonryComponent\ListItem %>
+      $renderListItem($First, $Middle, $Last)
     <% end_loop %>
   </div>
 <% else %>

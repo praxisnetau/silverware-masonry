@@ -254,15 +254,15 @@ class MasonryComponent extends BaseListComponent
     }
     
     /**
-     * Answers an array of grid class names for the HTML template.
+     * Answers an array of wrapper class names for the HTML template.
      *
      * @return array
      */
-    public function getGridClassNames()
+    public function getWrapperClassNames()
     {
-        $classes = ['masonry-grid'];
+        $classes = parent::getWrapperClassNames();
         
-        $this->extend('updateGridClassNames', $classes);
+        $classes[] = 'masonry-grid';
         
         return $classes;
     }
@@ -342,5 +342,17 @@ class MasonryComponent extends BaseListComponent
     public function isHorizontalOrder()
     {
         return (boolean) $this->HorizontalOrder;
+    }
+    
+    /**
+     * Updates the given array of list item class names.
+     *
+     * @param array $classes
+     *
+     * @return void
+     */
+    public function updateListItemClassNames(&$classes)
+    {
+        $classes[] = 'masonry-grid-item';
     }
 }
