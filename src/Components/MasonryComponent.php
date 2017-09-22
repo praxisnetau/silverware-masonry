@@ -127,20 +127,19 @@ class MasonryComponent extends BaseListComponent
     ];
     
     /**
-     * Answers a list of field objects for the CMS interface.
+     * Answers the list style fields for the receiver.
      *
      * @return FieldList
      */
-    public function getCMSFields()
+    public function getListStyleFields()
     {
         // Obtain Field Objects (from parent):
         
-        $fields = parent::getCMSFields();
+        $fields = parent::getListStyleFields();
         
-        // Create Style Fields:
+        // Create Field Objects:
         
-        $fields->addFieldToTab(
-            'Root.Style',
+        $fields->merge([
             FieldSection::create(
                 'MasonryStyle',
                 $this->fieldLabel('MasonryStyle'),
@@ -172,12 +171,27 @@ class MasonryComponent extends BaseListComponent
                     )
                 ]
             )
-        );
+        ]);
         
-        // Create Options Fields:
+        // Answer Field Objects:
         
-        $fields->addFieldToTab(
-            'Root.Options',
+        return $fields;
+    }
+    
+    /**
+     * Answers the list option fields for the receiver.
+     *
+     * @return FieldList
+     */
+    public function getListOptionFields()
+    {
+        // Obtain Field Objects (from parent):
+        
+        $fields = parent::getListOptionFields();
+        
+        // Create Field Objects:
+        
+        $fields->merge([
             FieldSection::create(
                 'MasonryOptions',
                 $this->fieldLabel('MasonryOptions'),
@@ -188,7 +202,7 @@ class MasonryComponent extends BaseListComponent
                     )
                 ]
             )
-        );
+        ]);
         
         // Answer Field Objects:
         
@@ -220,6 +234,16 @@ class MasonryComponent extends BaseListComponent
         // Answer Field Labels:
         
         return $labels;
+    }
+    
+    /**
+     * Answers true if the receiver can paginate.
+     *
+     * @return boolean
+     */
+    public function canPaginate()
+    {
+        return false;
     }
     
     /**

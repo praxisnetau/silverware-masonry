@@ -3,14 +3,28 @@
 
 .masonrycomponent {
   
-  .masonry-grid {
+  .items {
     
-    .masonry-grid-item {
+    > article.item {
       
-      img {
-        width: 100%;
-        height: auto;
-        display: block;
+      width: 100%;
+      
+      > div.image {
+        
+        img {
+          width: 100%;
+          height: auto;
+          display: block;
+        }
+        
+      }
+      
+      > section.content {
+        
+        header > * {
+          font-size: inherit;
+        }
+        
       }
       
     }

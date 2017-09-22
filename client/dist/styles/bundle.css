@@ -1,1 +1,1 @@
-.masonrycomponent .masonry-grid .masonry-grid-item img{width:100%;height:auto;display:block}
+.masonrycomponent .items>article.item{width:100%}.masonrycomponent .items>article.item>div.image img{width:100%;height:auto;display:block}.masonrycomponent .items>article.item>section.content header>*{font-size:inherit}

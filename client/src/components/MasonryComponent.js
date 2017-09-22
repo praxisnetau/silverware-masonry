@@ -9,6 +9,10 @@ $(function() {
   
   $('.masonrycomponent').each(function() {
     
+    // Initialise:
+    
+    var id = null;
+    
     // Obtain Masonry Grid:
     
     var $grid = $(this).find('.masonry-grid');
@@ -22,6 +26,20 @@ $(function() {
     
     imgLoad.on('progress', function() {
       masonry.layout();
+    });
+    
+    // Detect Browser Resize:
+    
+    $(window).resize(function() {
+      
+      if (id !== null) {
+        clearTimeout(id);
+      }
+      
+      id = setTimeout(function(){
+        masonry.layout();
+      }, 500);
+      
     });
     
   });
