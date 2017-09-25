@@ -17,6 +17,10 @@ $(function() {
     
     var $grid = $(this).find('.masonry-grid');
     
+    // Continue Loop (if no grid found):
+    
+    if ($grid.length === 0) return true;
+    
     // Initialise Masonry and ImagesLoaded:
     
     var masonry = new Masonry($grid[0], $grid.data('masonry-config'));
