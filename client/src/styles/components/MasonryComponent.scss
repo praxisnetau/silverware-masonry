@@ -21,8 +21,10 @@
       
       > section.content {
         
-        header > * {
-          font-size: inherit;
+        div.details > span {
+          display: block;
+          margin-right: 0;
+          margin-bottom: $spacer-quarter;
         }
         
       }

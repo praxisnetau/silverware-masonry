@@ -123,7 +123,7 @@ class MasonryComponent extends BaseListComponent
         'PercentWidthLarge' => '25',
         'PercentWidthHuge' => '20',
         'HorizontalOrder' => 1,
-        'ImageItems' => 1
+        'ImageItems' => 0
     ];
     
     /**
@@ -234,16 +234,6 @@ class MasonryComponent extends BaseListComponent
         // Answer Field Labels:
         
         return $labels;
-    }
-    
-    /**
-     * Answers true if the receiver can paginate.
-     *
-     * @return boolean
-     */
-    public function canPaginate()
-    {
-        return false;
     }
     
     /**
