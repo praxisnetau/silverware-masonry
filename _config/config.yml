@@ -6,6 +6,6 @@ Name: silverware-masonry
 
 SilverStripe\CMS\Controllers\ContentController:
   required_js:
-    - silverware-masonry/client/dist/js/bundle.js
+    - "silverware/masonry: client/dist/js/bundle.js"
   required_css:
-    - silverware-masonry/client/dist/styles/bundle.css
+    - "silverware/masonry: client/dist/styles/bundle.css"

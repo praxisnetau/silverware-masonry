@@ -14,13 +14,3 @@
  * @license https://opensource.org/licenses/BSD-3-Clause BSD-3-Clause
  * @link https://github.com/praxisnetau/silverware-masonry
  */
-
-// Define Module Constants:
-
-if (!defined('SILVERWARE_MASONRY_DIR')) {
-    define('SILVERWARE_MASONRY_DIR', basename(__DIR__));
-}
-
-if (!defined('SILVERWARE_MASONRY_PATH')) {
-    define('SILVERWARE_MASONRY_PATH', realpath(__DIR__));
-}
